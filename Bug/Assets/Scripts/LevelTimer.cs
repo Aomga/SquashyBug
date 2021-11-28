@@ -36,6 +36,8 @@ public class LevelTimer : MonoBehaviour
     void OnStopTimer(){
         timing = false;
         BigData.AddToGameTotalTime(totalTime);
+
+        text.SetText("");
     }
 
     public static float GetTime(){
