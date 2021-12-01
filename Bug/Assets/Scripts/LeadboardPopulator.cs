@@ -6,15 +6,18 @@ using DG.Tweening;
 
 public class LeadboardPopulator : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI names, scores;
+    [SerializeField] TextMeshProUGUI names, scores, playerName;
     void Start(){
         LeaderboardManager.RetrievedScores += OnRetrievedScores;
 
         LevelManager.GameComplete += OnGameComplete;
         LevelManager.StartGame += HideLeaderboard;
+
     }
 
     void OnRetrievedScores(Dictionary<string, int> scoreDictionary){
+        playerName.text = "<wave>" + Name.PlayerName + "</wave>";
+
         names.text = "<bounce>";
         scores.text = "<bounce>";
         foreach (KeyValuePair<string, int> dictionary in scoreDictionary)

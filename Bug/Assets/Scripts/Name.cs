@@ -28,6 +28,9 @@ public class Name : MonoBehaviour
         if(PlayerPrefs.HasKey("name_00")){
             NameSaved = true;
             PlayerName = PlayerPrefs.GetString("name_00");
+            if(PlayerName == ""){
+                PlayerName = "somehowNoName";
+            }
 
             SceneManager.LoadScene("Game");
         }else{
