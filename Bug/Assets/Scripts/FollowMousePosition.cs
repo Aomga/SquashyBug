@@ -24,15 +24,15 @@ public class FollowMousePosition : MonoBehaviour
     }
     void Update()
     {
-        if (stomping == false)
-        {
+        // if (stomping == false)
+        // {
             SetPositionToMousePosition();
 
             //check to see if we have enough stomps or are in menu
-            if(StompNumberText.stomps > 0 || LevelManager.inMenu){
-                StartCoroutine(Stomping());
-            }
-        }
+            // if(StompNumberText.stomps > 0 || LevelManager.inMenu){
+            //     StartCoroutine(Stomping());
+            // }
+        // }
 
         
 
@@ -48,49 +48,47 @@ public class FollowMousePosition : MonoBehaviour
         LayerMask GroundLayer = LayerMask.NameToLayer("Ground");
         
         if (Physics.Raycast(ray, out hit, 1000f, ~GroundLayer)) {
-            Vector3 smoothDampedVector3 = Vector3.SmoothDamp(transform.position, hit.point, ref currentVelocity, movementDamping, maxMoveSpeed);
-            transform.position = new Vector3(smoothDampedVector3.x, shoeHoveringHeight, smoothDampedVector3.z);
-
-
-
-
+            // Vector3 smoothDampedVector3 = Vector3.SmoothDamp(transform.position, hit.point, ref currentVelocity, movementDamping, maxMoveSpeed);
+            // transform.position = new Vector3(smoothDampedVector3.x, shoeHoveringHeight, smoothDampedVector3.z);
+            Vector3 smoothDampedVector3 = Vector3.SmoothDamp(transform.position, new Vector3(hit.point.x, hit.point.y + shoeHoveringHeight, hit.point.z), ref currentVelocity, movementDamping, maxMoveSpeed);
+            transform.position = smoothDampedVector3;
         }
 
     }
     //Creates stomp
-    IEnumerator Stomping() 
+    // IEnumerator Stomping() 
     
-    {
+    // {
 
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            stomping = true;
+    //     if (Input.GetKey(KeyCode.Mouse0))
+    //     {
+    //         stomping = true;
             
-            StompNumberText.stomps--;
-            BigData.IncTotalStomps();
+    //         StompNumberText.stomps--;
+    //         BigData.IncTotalStomps();
 
-            StompStarted?.Invoke(); //used to calculate how many bugs were killed during a stomp
-            stompStartFX.Play(); // swish sound for shoe falling down
+    //         StompStarted?.Invoke(); //used to calculate how many bugs were killed during a stomp
+    //         stompStartFX.Play(); // swish sound for shoe falling down
 
-            transform.DOMoveY(0,1);
+    //         transform.DOMoveY(0,1);
 
-            yield return new WaitForSeconds(1);
-            CameraShaker.shakeLight?.Invoke(); //shakes screen - not sure if this should be heavy or light
-            stompGroundHitFX.Play(); //stomp sound for shoe hitting ground
+    //         yield return new WaitForSeconds(1);
+    //         CameraShaker.shakeLight?.Invoke(); //shakes screen - not sure if this should be heavy or light
+    //         stompGroundHitFX.Play(); //stomp sound for shoe hitting ground
 
-            transform.DOMoveY(shoeHoveringHeight, 1);
+    //         transform.DOMoveY(shoeHoveringHeight, 1);
 
-            if(StompNumberText.stomps <= 0){
-                LevelManager.AllStompsUsed?.Invoke();
-            }
+    //         if(StompNumberText.stomps <= 0){
+    //             LevelManager.AllStompsUsed?.Invoke();
+    //         }
 
-            StompEnded?.Invoke(); //used to calculate how many bugs were killed during a stomp
+    //         StompEnded?.Invoke(); //used to calculate how many bugs were killed during a stomp
 
-            stomping = false;
-        }
+    //         stomping = false;
+    //     }
 
 
-    }
+    // }
 
     void DisplayStompScore(int totalKilled){
         string text = "+ " + totalKilled.ToString();

@@ -13,7 +13,7 @@ public class StompNumberText : MonoBehaviour
     void Start()
     {
         LevelManager.TotalStomps += SetStompAmount;
-        FollowMousePosition.StompStarted += OnStompUsed;
+        Stomp.StompStarted += OnStompUsed;
     }
 
     void OnStompUsed(){

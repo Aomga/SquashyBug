@@ -7,7 +7,6 @@ public class SplatAppear : MonoBehaviour
 
     [SerializeField] Color[] colors;
 
-    
     void Start()
     {
         float randomScaleAmount = Random.Range(0.2f, .8f);
@@ -20,7 +19,9 @@ public class SplatAppear : MonoBehaviour
         transform.DORotate(new Vector3(-90, randomRotationAmount, 0), appearDuration);
 
         GetComponent<MeshRenderer>().material.color = colors[Random.Range(0, colors.Length)];
-    }
 
-    //TODO: remove splat on next level
+        transform.DOScale(Vector3.zero, 10f).SetDelay(10f).OnComplete(() => {
+            Destroy(gameObject);
+        });
+    }
 }

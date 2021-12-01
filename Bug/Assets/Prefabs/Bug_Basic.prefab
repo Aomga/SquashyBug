@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 499299229}
   - component: {fileID: 9113157558141977816}
   - component: {fileID: 5084086713506943936}
-  - component: {fileID: 1832863613793183149}
+  - component: {fileID: 1128366887647704010}
   m_Layer: 0
   m_Name: Bug_Basic
   m_TagString: Squashable
@@ -68,8 +68,10 @@ MonoBehaviour:
   - {fileID: 7506182463552245787}
   - {fileID: 499299229}
   - {fileID: 9113157558141977816}
-  - {fileID: 1832863613793183149}
   - {fileID: 5084086713506943936}
+  - {fileID: 1128366887647704010}
+  safeFromKillAll: 0
+  noScore: 0
 --- !u!114 &499299229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,19 +117,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1832863613793183149
-BoxCollider:
+--- !u!135 &1128366887647704010
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2578646109838291647}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41208035, y: 0.23680459, z: 0.513693}
-  m_Center: {x: 0.0054495633, y: 0.14415057, z: 0.0073292255}
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.16, z: 0}
 --- !u!1001 &5084086713591684776
 PrefabInstance:
   m_ObjectHideFlags: 0

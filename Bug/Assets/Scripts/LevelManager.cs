@@ -36,8 +36,8 @@ public class LevelManager : MonoBehaviour
         AllBugsDead += OnAllBugsDead;
         AllStompsUsed += OnAllStompsUsed;
 
-        FollowMousePosition.StompStarted += OnStompStarted;
-        FollowMousePosition.StompEnded += OnStompEnded;
+        Stomp.StompStarted += OnStompStarted;
+        Stomp.StompEnded += OnStompEnded;
 
         inMenu = true;
     }

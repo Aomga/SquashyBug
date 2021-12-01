@@ -27,6 +27,7 @@ public class KillBug : MonoBehaviour
     }
     
     public void Kill(bool trackStats = true){
+        GetComponent<Splatter>().Splat();
         RemoveComponents();
 
         if(trackStats){
@@ -36,8 +37,6 @@ public class KillBug : MonoBehaviour
                 LevelManager.BugKilled?.Invoke();
             }
         }
-
-        GetComponent<Splatter>().Splat();
 
         transform.DOScaleY(0.1f, 0.1f);
 
